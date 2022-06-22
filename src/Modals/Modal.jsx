@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "../CSS/Modal.css";
+import { employees } from '../Verify.js';
 
-
-export default function Modal ({showModal, onClose}) {
-
-  let [pin, setPin] = useState("");
+export default function Modal ({showModal, setAccess, setEmployee, onClose}) {
+  let [one, setOne] = useState("");
+  let [two, setTwo] = useState("");
+  let [three, setThree] = useState("");
+  let [four, setFour] = useState("");
 
   if (!showModal) {
     return null
@@ -18,32 +20,46 @@ export default function Modal ({showModal, onClose}) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(pin);
+    let pin = one + two + three + four;
+    if (employees[pin]) {
+      setAccess(true);
+      setEmployee(employees[pin]);
+    } else {
+      alert('Invalid Pin. Please try again.')
+      setOne("");
+      setTwo("");
+      setThree("");
+      setFour("");
+      document.getElementById("1").focus();
+    }
   }
 
   const handleOne = (e) => {
     e.preventDefault();
-    setPin(pin + e.target.value);
+    setOne(e.target.value);
     document.getElementById("2").focus();
   }
   const handleTwo = (e) => {
     e.preventDefault();
-    setPin(pin + e.target.value);
+    setTwo( e.target.value);
     document.getElementById("3").focus();
   }
   const handleThree= (e) => {
     e.preventDefault();
-    setPin(pin + e.target.value);
+    setThree(e.target.value);
     document.getElementById("4").focus();
   }
   const handleFour = (e) => {
     e.preventDefault();
-    setPin(pin + e.target.value);
+    setFour(e.target.value);
   }
 
   return (
     <div className={`modal ${showModal ? 'show' : ''}`}>
       <div className="modal-content">
+        <div className="modal-footer">
+          <button className="close-button" onClick={onClose}>X</button>
+        </div>
         <div className="modal-header">
           <div className="modal-header">
             <p>Please enter you pin below:</p>
@@ -52,10 +68,10 @@ export default function Modal ({showModal, onClose}) {
             <form onSubmit={handleSubmit}>
               <input
                 className="user-input"
-                type="tel"
+                type="text"
                 id="1"
-                // value={oneNum}
-                pattern="[0-9]{1}"
+                value={one}
+                maxLength={1}
                 onChange={handleOne}
                 autoFocus
                 required
@@ -63,39 +79,36 @@ export default function Modal ({showModal, onClose}) {
               </input>
               <input
                 className="user-input"
-                type="tel"
+                type="text"
                 id="2"
-                // value={twoNum}
-                pattern="[0-9]{1}"
+                value={two}
+                maxLength={1}
                 onChange={handleTwo}
                 required
                 >
               </input>
               <input
                 className="user-input"
-                type="tel"
+                type="text"
                 id="3"
-                // value={threeNum}
-                pattern="[0-9]{1}"
+                value={three}
+                maxLength={1}
                 onChange={handleThree}
                 required
                 >
               </input>
               <input
                 className="user-input"
-                type="tel"
+                type="text"
                 id="4"
-                // value={fourNum}
-                pattern="[0-9]{1}"
+                value={four}
+                maxLength={1}
                 onChange={handleFour}
                 required
                 >
               </input>
               <input className="submit-button" type="submit" value="Sign In" />
             </form>
-          </div>
-          <div className="modal-footer">
-            <button className="close-button" onClick={onClose}>Close</button>
           </div>
         </div>
       </div>

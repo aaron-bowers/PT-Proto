@@ -1,0 +1,63 @@
+.patients {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  animation-name: test;
+  animation-duration: 2s;
+}
+
+@keyframes test {
+  0%    {left: 0px; top: 0px}
+  100%  {left: 50px; top: 0px}
+}
+
+.p-btn {
+  display: block;
+  margin: 2em 0;
+  min-width: 10vw;
+  min-height: 5vw;
+  border-radius: 5px;
+  font-size: calc(6px + 1.5vmin);
+}
+
+.p-btn:hover {
+  background-color:beige;
+}
+
+.search-bar {
+  display: flex;
+  line-height: 24px;
+  margin-right: 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  vertical-align: middle;
+  width: 40%;
+  position:absolute;
+  top: 12.5%;
+  left: 2%;
+}
+
+.search-patient {
+  color: white;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  text-align: middle;
+  border: 0;
+  width: 100%;
+  background: none;
+}
+
+.search-patient:focus {
+  outline: none;
+}
+
+::placeholder {
+  color:antiquewhite;
+}
+
+.close-search {
+  background-color: transparent;
+  color: antiquewhite;
+  border: 0;
+}

@@ -1,11 +1,19 @@
 import { useState, useEffect } from 'react';
 import fspt from './Images/fspt.jpeg';
 import './CSS/App.css';
+import Home from './Home.js';
+import Patients from './Patients/Patients.js';
 import Modal from './Modals/Modal.jsx';
 
 function App() {
-  let [showModal, setModal] = useState(false);
+  let [date, setDate] = useState(new Date());
+  let [access, setAccess] = useState(false);
+  let [employee, setEmployee] = useState("");
   // const [view, setView] = useState({ name: "Product", viewProps: {} });
+
+  useEffect(() => {
+    setInterval(() => setDate(new Date()), 1000);
+  }, []);
 
   // useEffect(() => {
   //   renderView();
@@ -26,28 +34,34 @@ function App() {
   //   };
   // };
 
-  if (showModal) {
-    document.body.classList.add('active-modal');
-  } else {
-    document.body.classList.remove('active-modal');
-  }
-
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={fspt} className="logo" alt="Family and Sports Physical Therapy logo" />
-        <p className="header-text">
-          Family and Sports PT
-        </p>
-        <div className="btns">
-          <div className="PT" onClick={() => setModal(true)}>PT</div>
-          <div className="Aide" onClick={() => setModal(true)}>Asst/Aide</div>
-        </div>
-        <Modal
-          onClose={() => setModal(false)}
-          showModal={showModal}
+      <div id="current-date">
+        {date.toLocaleDateString('en-US', {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+        })}
+      </div>
+      <div>
+        {!access ? null : <p id="employee">{employee}</p>}
+      </div>
+      <div id="current-time">
+        {date.toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true,
+        })}
+      </div>
+      {!access ?
+        <Home
+          setEmployee={setEmployee}
+          setAccess={setAccess}
+        /> :
+        <Patients
+          setAccess={setAccess}
         />
-      </header>
+      }
     </div>
   );
 }
