@@ -1,9 +1,14 @@
+#patients-container {
+  display: flex;
+  width: 100vw;
+  justify-content: space-evenly;
+}
+
 .patients {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  animation-name: test;
-  animation-duration: 2s;
+  width: 20%;
 }
 
 .p-btn {
@@ -11,12 +16,24 @@
   margin: 2em 0;
   min-width: 10vw;
   min-height: 5vw;
-  border-radius: 5px;
+  border-radius: 10px;
   font-size: calc(6px + 1.5vmin);
 }
 
-.p-btn:hover {
-  background-color:beige;
+.p-btn:hover,
+.back:hover,
+.flow-btn:hover {
+  background-color:blanchedalmond;
+}
+
+.search-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+  width: 25%;
+  FONT-WEIGHT: 500;
+  align-items: stretch;
+  justify-content: flex-start;
 }
 
 .search-bar {
@@ -26,21 +43,24 @@
   border: 1px solid white;
   border-radius: 5px;
   vertical-align: middle;
-  width: 40%;
-  position:absolute;
-  top: 12.5%;
-  left: 2%;
+  width: 100%;
 }
 
 .search-patient {
   color: white;
   display: inline-block;
   vertical-align: middle;
-  font-size: 18px;
+  font-size: 95%;
   text-align: middle;
   border: 0;
   width: 100%;
   background: none;
+}
+
+.currentP {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .search-patient:focus {
@@ -55,4 +75,59 @@
   background-color: transparent;
   color: antiquewhite;
   border: 0;
+}
+
+.p-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.p-container:hover {
+  background-color: #494D5F;
+  border-radius: 5px;
+}
+
+.p-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.p-cont {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.p-btn-cont {
+  display: flex;
+}
+
+.back,
+.flow-btn {
+  display: block;
+  margin: 1em;
+  min-width: 6vw;
+  min-height: 3vw;
+  border-radius: 10px;
+  font-size: calc(6px + 1.5vmin);
+}
+
+.p-photo {
+  width: 200px;
+  height: 260px;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.p-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10px;
+}
+
+.f-photo {
+  width: 80%;
 }

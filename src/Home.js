@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import fspt from './Images/fspt.jpeg';
 import './CSS/App.css';
 import Modal from './Modals/Modal.jsx';
@@ -15,7 +15,11 @@ function Home({setEmployee, setAccess}) {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={fspt} className="logo" alt="Family and Sports Physical Therapy logo" />
+        <img
+          src={fspt}
+          className="logo"
+          alt="Family and Sports Physical Therapy logo"
+        />
         <p className="header-text">
           Family and Sports PT
         </p>
